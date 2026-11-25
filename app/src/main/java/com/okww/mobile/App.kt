@@ -21,6 +21,10 @@ class App : Application() {
     var uiVisible: Boolean = false
         private set
 
+    /** 悬浮窗内正在添加/调整按键，自动化同样暂停，避免误点。 */
+    @Volatile
+    var calibrating: Boolean = false
+
     val engine: AutomationEngine by lazy { AutomationEngine(this) }
 
     private var resumedCount = 0

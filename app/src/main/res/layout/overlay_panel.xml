@@ -4,41 +4,131 @@
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
     android:background="@drawable/bg_overlay"
-    android:gravity="center_vertical"
-    android:orientation="horizontal"
-    android:paddingHorizontal="8dp"
+    android:orientation="vertical"
+    android:paddingHorizontal="6dp"
     android:paddingVertical="4dp">
 
-    <TextView
-        android:id="@+id/tvOverlayStatus"
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:maxEms="10"
-        android:ellipsize="end"
-        android:maxLines="1"
-        android:text="@string/status_idle"
-        android:textColor="@color/text"
-        android:textSize="10sp" />
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnOverlayToggle"
-        style="@style/Widget.OKWW.Button"
+        <TextView
+            android:id="@+id/tvOverlayStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxEms="7"
+            android:maxLines="1"
+            android:text="@string/status_idle"
+            android:textColor="@color/text"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/btnOverlayCal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/bg_chip"
+            android:paddingHorizontal="6dp"
+            android:paddingVertical="3dp"
+            android:text="@string/overlay_calibrate"
+            android:textColor="@color/accent"
+            android:textSize="10sp" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btnOverlayToggle"
+            style="@style/Widget.OKWW.Button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:minHeight="30dp"
+            android:minWidth="0dp"
+            android:paddingHorizontal="8dp"
+            android:text="@string/btn_start"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/btnOverlayClose"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_marginStart="2dp"
+            android:gravity="center"
+            android:text="@string/overlay_close"
+            android:textColor="@color/muted"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="6dp"
-        android:minHeight="30dp"
-        android:minWidth="0dp"
-        android:paddingHorizontal="8dp"
-        android:text="@string/btn_start"
-        android:textSize="10sp" />
+        android:layout_marginTop="4dp"
+        android:orientation="horizontal">
 
-    <TextView
-        android:id="@+id/btnOverlayClose"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
-        android:layout_marginStart="4dp"
-        android:gravity="center"
-        android:text="@string/overlay_close"
-        android:textColor="@color/muted"
-        android:textSize="15sp" />
+        <TextView
+            android:id="@+id/chipCloud"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/bg_chip"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:text="@string/overlay_task_cloud"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/chipCombat"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/bg_chip"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:text="@string/overlay_task_combat"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/chipPickup"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/bg_chip"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:text="@string/overlay_task_pickup"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/chipDialog"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/bg_chip"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:text="@string/overlay_task_dialog"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/chipSwitch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:background="@drawable/bg_chip"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:text="@string/overlay_task_switch"
+            android:textSize="10sp" />
+
+        <TextView
+            android:id="@+id/chipLock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/bg_chip"
+            android:paddingHorizontal="5dp"
+            android:paddingVertical="2dp"
+            android:text="@string/overlay_task_lock"
+            android:textSize="10sp" />
+    </LinearLayout>
 </LinearLayout>

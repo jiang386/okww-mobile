@@ -110,6 +110,11 @@ class AutomationEngine(private val context: Context) {
                 delay(400)
                 continue
             }
+            if (App.instance.calibrating) {
+                RunState.setStatus("正在添加按键，已暂停")
+                delay(300)
+                continue
+            }
             val now = SystemClock.elapsedRealtime()
             if (now - lastTick < 120) {
                 delay(50)
