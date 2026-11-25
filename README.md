@@ -1,4 +1,4 @@
-# OKWW Mobile · 云·鸣潮手机端自动化
+# OKWW Mobile · 云·鸣潮手机端自动化(废弃状态)
 
 把 PC 端 [ok-oldking/ok-wuthering-waves](https://github.com/ok-oldking/ok-wuthering-waves)（下称 OKWW）的自动化思路迁移到 Android：同时支持 **「云·鸣潮」网页版**（`https://mc.kurogames.com/cloud/` + Via 浏览器）与 **鸣潮手机端官方客户端**，用投屏像素分析 + 离线 OCR + 无障碍手势实现自动战斗、自动拾取、跳过剧情，以及云游戏的断线自动重连。
 
