@@ -125,7 +125,19 @@ gradle :app:assembleDebug
 产物：`app/build/outputs/apk/debug/app-debug.apk`
 
 已打包好的版本可直接下载：
-[okww-mobile-0.1.0-debug.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.0-debug.apk)
+
+- 标准版（targetSdk 35）：[okww-mobile-0.1.0-debug.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.0-debug.apk)
+- 侧载兼容版（targetSdk 32，绕过部分 ROM 的「受限设置」）：[okww-mobile-0.1.0-target32.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.0-target32.apk)
+
+### 侧载兼容构建（targetSdk 32）
+
+Android 13+ 会对 `targetSdk >= 33` 的侧载应用启用「受限设置」，部分 ROM（realme UI / ColorOS 等）甚至隐藏了「允许受限设置」入口，导致无障碍服务无法开启。此时可构建 targetSdk 32 的兼容包：
+
+```bash
+./gradlew :app:assembleDebug -PtargetSdk=32
+```
+
+该参数已在 [app/build.gradle.kts](app/build.gradle.kts) 中支持，默认仍为 35。兼容包功能与标准版一致，只是不再触发受限设置。
 
 构建提示：
 
@@ -267,11 +279,16 @@ OCR 依赖文字可见。若云画面分辨率太低，可在 Via 中调高画�
 确认「显示在其他应用上层」权限已开；部分系统（MIUI / HyperOS / ColorOS）需要单独允许后台弹出界面。
 
 **Q：开启无障碍时提示「系统已拒绝向此应用授予访问权限」？**
-这是 Android 13+ 对侧载（非应用商店安装）应用的「受限设置」保护，不是安装包损坏。处理：设置 → 应用 → 应用管理 → OKWW → 右上角 **⋮ → 允许受限设置**（可能需验证锁屏密码），再回到 设置 → 无障碍 → 已下载的应用 → OKWW 开启。若没有该菜单项，可用 adb 放开：
+这是 Android 13+ 对侧载（非应用商店安装）应用的「受限设置」保护，不是安装包损坏。按顺序尝试：
+
+1. 设置 → 应用 → 应用管理 → OKWW → 右上角 **⋮ → 允许受限设置**（可能需验证锁屏密码），再回到 设置 → 无障碍 → 已下载的应用 → OKWW 开启。
+2. 若没有「允许受限设置」菜单项（realme UI / ColorOS 常见），用 adb 放开：
 
 ```bash
 adb shell appops set com.okww.mobile ACCESS_RESTRICTED_SETTINGS allow
 ```
+
+3. 都没有办法时，直接安装 **侧载兼容版（targetSdk 32）**：[okww-mobile-0.1.0-target32.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.0-target32.apk)，该版本不会触发受限设置。
 
 ---
 
