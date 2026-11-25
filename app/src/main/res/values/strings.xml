@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">OKWW 移动版</string>
+    <string name="accessibility_label">OKWW 触控执行器</string>
+    <string name="accessibility_desc">用于在云·鸣潮网页版中模拟点击与滑动，实现自动战斗、自动拾取与云断线重连。不会读取你的输入内容。</string>
+
+    <string name="title">OKWW 移动版 · 云·鸣潮自动化</string>
+    <string name="subtitle">Android 移植版 · 适配 Via 浏览器横屏 / 全屏 / 游戏模式</string>
+
+    <string name="step_permissions">① 授权</string>
+    <string name="btn_capture">投屏授权</string>
+    <string name="btn_access">无障碍服务</string>
+    <string name="btn_overlay">悬浮窗</string>
+    <string name="btn_notify">通知</string>
+    <string name="btn_battery">电池优化</string>
+    <string name="btn_launch">打开云·鸣潮</string>
+    <string name="btn_game_mode">游戏模式</string>
+    <string name="btn_calibrate">按键校准</string>
+    <string name="btn_panel">悬浮控制台</string>
+    <string name="btn_start">开始自动化</string>
+    <string name="btn_stop">停止</string>
+    <string name="btn_help">使用说明</string>
+
+    <string name="tasks_title">任务开关</string>
+    <string name="task_cloud">云断线守护</string>
+    <string name="task_combat">自动战斗</string>
+    <string name="task_pickup">自动拾取</string>
+    <string name="task_dialog">自动跳过剧情</string>
+    <string name="task_switch">自动切人</string>
+
+    <string name="hint">流程：① 授予投屏与无障碍 → ② 用 Via 打开云·鸣潮并进入游戏 → ③ 回到本页点「按键校准」对齐虚拟按键 → ④ 开始自动化，切到 Via 横屏全屏游玩。</string>
+    <string name="log_title">运行日志</string>
+    <string name="status_idle">空闲</string>
+    <string name="status_running">运行中</string>
+    <string name="status_stopped">已停止</string>
+
+    <string name="cal_title">按键校准</string>
+    <string name="cal_desc">把每个圆点拖到游戏里对应的虚拟按键中心。建议先切到 Via 游戏画面，再回到这里点「刷新画面」。</string>
+    <string name="cal_save">保存</string>
+    <string name="cal_reset">恢复默认</string>
+    <string name="cal_refresh">刷新画面</string>
+    <string name="cal_test">测试点击</string>
+    <string name="cal_noframe">暂无画面：请先完成投屏授权，并让游戏画面保持在后台运行。</string>
+    <string name="cal_saved">已保存校准</string>
+
+    <string name="overlay_title">OKWW</string>
+    <string name="overlay_close">×</string>
+
+    <string name="help_title">使用说明 / Via 设置</string>
+    <string name="help_body">1) 投屏授权：选择「整个屏幕」或「单个应用（Via）」，之后本应用才能在后台看到画面。\n\n2) 无障碍服务：OKWW 触控执行器用于模拟点击/滑动。\n\n3) Via 横屏 + 全屏 + 游戏模式：\n· 手机横放后打开云·鸣潮，点网页内的全屏按钮；\n· 点本应用「游戏模式」：锁定横屏、提高亮度、开启免打扰、尝试沉浸全屏；\n· 若提示「沉浸全屏需要 adb」，执行一次：\nadb shell pm grant com.okww.mobile android.permission.WRITE_SECURE_SETTINGS\n\n4) 按键校准：云游戏画面里的按键位置因机型/分辨率而异，必须校准一次。\n\n5) 云游戏断线（如 1020 云服务错误）会被「云断线守护」自动点掉并重进游戏。\n\n注意：云游戏有串流延迟，已内置 0.8s 重锁与 3s 血条宽限；仍建议使用稳定网络。</string>
+    <string name="help_ok">知道了</string>
+    <string name="copy_adb">复制 adb 命令</string>
+    <string name="copied">已复制</string>
+
+    <string name="toast_no_via">未检测到 Via 浏览器（mark.via / mark.via.gp）</string>
+    <string name="toast_no_capture">请先完成投屏授权</string>
+    <string name="toast_no_access">请先开启无障碍服务</string>
+    <string name="toast_started">自动化已启动</string>
+    <string name="toast_game_mode_fail">未能修改系统设置，请在系统设置中允许本应用「修改系统设置」</string>
+
+    <string name="notif_channel_capture">屏幕采集</string>
+    <string name="notif_channel_overlay">悬浮控制台</string>
+    <string name="notif_capture_title">OKWW 正在采集屏幕</string>
+    <string name="notif_capture_text">云·鸣潮自动化运行中，点按返回控制台</string>
+    <string name="notif_overlay_title">OKWW 悬浮控制台</string>
+    <string name="notif_overlay_text">点按返回控制台</string>
+
+    <string name="point_attack">普攻</string>
+    <string name="point_skill">技能</string>
+    <string name="point_ultimate">解放</string>
+    <string name="point_echo">声骸</string>
+    <string name="point_dodge">闪避</string>
+    <string name="point_jump">跳跃</string>
+    <string name="point_interact">交互</string>
+    <string name="point_switch1">角色1</string>
+    <string name="point_switch2">角色2</string>
+    <string name="point_switch3">角色3</string>
+    <string name="point_joystick">摇杆</string>
+    <string name="point_dialog">剧情推进</string>
+    <string name="point_target">锁定</string>
+    <string name="point_fullscreen">网页全屏</string>
+</resources>

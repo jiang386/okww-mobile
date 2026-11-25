@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/overlayRoot"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_overlay"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingHorizontal="8dp"
+    android:paddingVertical="4dp">
+
+    <TextView
+        android:id="@+id/tvOverlayStatus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:maxEms="10"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:text="@string/status_idle"
+        android:textColor="@color/text"
+        android:textSize="10sp" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btnOverlayToggle"
+        style="@style/Widget.OKWW.Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="6dp"
+        android:minHeight="30dp"
+        android:minWidth="0dp"
+        android:paddingHorizontal="8dp"
+        android:text="@string/btn_start"
+        android:textSize="10sp" />
+
+    <TextView
+        android:id="@+id/btnOverlayClose"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginStart="4dp"
+        android:gravity="center"
+        android:text="@string/overlay_close"
+        android:textColor="@color/muted"
+        android:textSize="15sp" />
+</LinearLayout>
