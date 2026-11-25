@@ -12,20 +12,19 @@ import org.json.JSONObject
  * 默认值参考移动端《云·鸣潮》横屏布局，可能与实际机型存在偏差，务必校准。
  */
 enum class KeyPoint(val labelRes: Int, val defX: Float, val defY: Float) {
-    ATTACK(R.string.point_attack, 0.880f, 0.740f),
-    SKILL(R.string.point_skill, 0.752f, 0.600f),
-    ULTIMATE(R.string.point_ultimate, 0.905f, 0.470f),
-    ECHO(R.string.point_echo, 0.672f, 0.730f),
-    DODGE(R.string.point_dodge, 0.725f, 0.865f),
-    JUMP(R.string.point_jump, 0.625f, 0.900f),
+    ATTACK(R.string.point_attack, 0.928f, 0.712f),
+    SKILL(R.string.point_skill, 0.763f, 0.778f),
+    ULTIMATE(R.string.point_ultimate, 0.725f, 0.867f),
+    ECHO(R.string.point_echo, 0.806f, 0.673f),
+    DODGE(R.string.point_dodge, 0.870f, 0.678f),
+    JUMP(R.string.point_jump, 0.871f, 0.842f),
     INTERACT(R.string.point_interact, 0.855f, 0.430f),
-    SWITCH_1(R.string.point_switch1, 0.955f, 0.780f),
-    SWITCH_2(R.string.point_switch2, 0.955f, 0.855f),
-    SWITCH_3(R.string.point_switch3, 0.955f, 0.930f),
+    SWITCH_1(R.string.point_switch1, 0.950f, 0.322f),
+    SWITCH_2(R.string.point_switch2, 0.950f, 0.433f),
+    SWITCH_3(R.string.point_switch3, 0.950f, 0.544f),
     JOYSTICK(R.string.point_joystick, 0.130f, 0.670f),
     DIALOG_ADVANCE(R.string.point_dialog, 0.800f, 0.780f),
-    TARGET(R.string.point_target, 0.930f, 0.300f),
-    FULLSCREEN(R.string.point_fullscreen, 0.965f, 0.060f)
+    TARGET(R.string.point_target, 0.945f, 0.600f)
 }
 
 class AutoConfig {

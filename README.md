@@ -40,7 +40,7 @@
 | **血条宽限** | 参考 OKWW 的 `CLOUD_HEALTH_LOST_GRACE = 3s`：串流画面血条闪烁时不会误判脱战 |
 | **串流去重** | 云端延迟下同一动作 2.2s 内不重复执行，避免连点风暴 |
 | **Via 游戏模式** | 一键锁横屏、调最大亮度、开启免打扰；授权后可全局沉浸全屏（隐藏状态栏 / 导航栏） |
-| **按键校准** | 14 个触控点位可视化拖拽，归一化坐标（0~1）适配任意分辨率与网页缩放 |
+| **按键校准** | 13 个触控点位可视化拖拽，归一化坐标（0~1）适配任意分辨率与网页缩放 |
 | **悬浮控制台** | 游戏内悬浮面板，随时开始 / 停止 / 查看状态与日志 |
 | **安全暂停** | 本应用界面（控制台 / 校准页）在前台时自动暂停点击，避免误触自身 UI |
 
@@ -126,8 +126,8 @@ gradle :app:assembleDebug
 
 已打包好的版本可直接下载：
 
-- 标准版（targetSdk 35）：[okww-mobile-0.1.0-debug.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.0-debug.apk)
-- 侧载兼容版（targetSdk 32，绕过部分 ROM 的「受限设置」）：[okww-mobile-0.1.0-target32.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.0-target32.apk)
+- 标准版（targetSdk 35）：[okww-mobile-0.1.1-debug.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.1-debug.apk)
+- 侧载兼容版（targetSdk 32，绕过部分 ROM 的「受限设置」）：[okww-mobile-0.1.1-target32.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.1-target32.apk)
 
 ### 侧载兼容构建（targetSdk 32）
 
@@ -187,27 +187,26 @@ adb shell pm grant com.okww.mobile android.permission.WRITE_SECURE_SETTINGS
 
 1. 进入云游戏实际战斗画面（保证后台有真实截图）。
 2. 主界面点 **「校准」**，页面会加载当前投屏画面作为底图。
-3. 拖动 14 个圆点到对应按钮中心，可点「测试点击」确认落点。
+3. 拖动 13 个圆点到对应按钮中心，可点「测试点击」确认落点。
 4. 点「保存」写入本地配置；「恢复默认」可回到内置坐标。
 
-14 个点位：
+13 个点位：
 
 | 键 | 含义 | 默认坐标 (x, y) |
 | --- | --- | --- |
-| ATTACK | 普攻 | 0.880, 0.740 |
-| SKILL | 共鸣技能 | 0.752, 0.600 |
-| ULTIMATE | 共鸣解放 | 0.905, 0.470 |
-| ECHO | 声骸技能 | 0.672, 0.730 |
-| DODGE | 闪避 | 0.725, 0.865 |
-| JUMP | 跳跃 | 0.625, 0.900 |
+| ATTACK | 普攻 | 0.928, 0.712 |
+| SKILL | 共鸣技能 | 0.763, 0.778 |
+| ULTIMATE | 共鸣解放 | 0.725, 0.867 |
+| ECHO | 声骸技能 | 0.806, 0.673 |
+| DODGE | 闪避 | 0.870, 0.678 |
+| JUMP | 跳跃 | 0.871, 0.842 |
 | INTERACT | 交互 / 拾取 F | 0.855, 0.430 |
-| SWITCH_1/2/3 | 切人 1/2/3 | 0.955, 0.780 / 0.855 / 0.930 |
+| SWITCH_1/2/3 | 切人 1/2/3 | 0.950, 0.322 / 0.433 / 0.544 |
 | JOYSTICK | 摇杆中心 | 0.130, 0.670 |
 | DIALOG_ADVANCE | 对话推进 | 0.800, 0.780 |
-| TARGET | 锁定目标 | 0.930, 0.300 |
-| FULLSCREEN | 全屏按钮 | 0.965, 0.060 |
+| TARGET | 锁定目标 | 0.945, 0.600 |
 
-坐标均为相对屏幕的归一化值，与分辨率无关。
+坐标均为相对屏幕的归一化值，与分辨率无关。默认值按《云·鸣潮》移动端 16:9 横屏实机画面标定；横屏、游戏模式、全屏由系统/浏览器层负责，**不再设置对应按键点**。
 
 配置存放在应用私有 SharedPreferences（`okww_config`）中，JSON 格式，包含点位、任务开关与节奏参数。
 
@@ -288,7 +287,7 @@ OCR 依赖文字可见。若云画面分辨率太低，可在 Via 中调高画�
 adb shell appops set com.okww.mobile ACCESS_RESTRICTED_SETTINGS allow
 ```
 
-3. 都没有办法时，直接安装 **侧载兼容版（targetSdk 32）**：[okww-mobile-0.1.0-target32.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.0-target32.apk)，该版本不会触发受限设置。
+3. 都没有办法时，直接安装 **侧载兼容版（targetSdk 32）**：[okww-mobile-0.1.1-target32.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.1-target32.apk)，该版本不会触发受限设置。
 
 ---
 
