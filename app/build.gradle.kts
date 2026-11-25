@@ -10,7 +10,9 @@ android {
     defaultConfig {
         applicationId = "com.okww.mobile"
         minSdk = 26
-        targetSdk = 35
+        // 可通过 -PtargetSdk=32 覆盖：部分 ROM（realme / ColorOS 等）对 targetSdk >= 33
+        // 的侧载应用强制「受限设置」，导致无障碍无法开启；targetSdk 32 可绕过该限制。
+        targetSdk = (project.findProperty("targetSdk") as String?)?.toIntOrNull() ?: 35
         versionCode = 1
         versionName = "0.1.0"
         resourceConfigurations.addAll(listOf("zh", "en"))
