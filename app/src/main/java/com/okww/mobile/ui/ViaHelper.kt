@@ -33,6 +33,24 @@ object ViaHelper {
 
     fun adbGrantCommand(): String =
         "adb shell pm grant com.okww.mobile android.permission.WRITE_SECURE_SETTINGS"
+
+    /** 鸣潮手机端（官方客户端 / B 服）包名。 */
+    private val GAME_PACKAGES = listOf("com.kurogame.mingchao", "com.kurogame.mingchao.bilibili")
+
+    fun findGame(ctx: Context): String? = GAME_PACKAGES.firstOrNull { pkg ->
+        runCatching { ctx.packageManager.getPackageInfo(pkg, 0) }.isSuccess
+    }
+
+    /** 启动已安装的鸣潮手机端；未安装时返回 false。 */
+    fun openGame(ctx: Context): Boolean {
+        val pkg = findGame(ctx) ?: return false
+        val intent = ctx.packageManager.getLaunchIntentForPackage(pkg) ?: return false
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK)
+        return runCatching {
+            ctx.startActivity(intent)
+            true
+        }.getOrDefault(false)
+    }
 }
 
 /**

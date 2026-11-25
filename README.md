@@ -1,6 +1,6 @@
 # OKWW Mobile · 云·鸣潮手机端自动化
 
-把 PC 端 [ok-oldking/ok-wuthering-waves](https://github.com/ok-oldking/ok-wuthering-waves)（下称 OKWW）的自动化思路迁移到 Android：面向 **「云·鸣潮」网页版**（`https://mc.kurogames.com/cloud/`）+ **Via 浏览器**的横屏 / 全屏 / 游戏模式，用投屏像素分析 + 离线 OCR + 无障碍手势实现自动战斗、自动拾取、跳过剧情和云断线自动重连。
+把 PC 端 [ok-oldking/ok-wuthering-waves](https://github.com/ok-oldking/ok-wuthering-waves)（下称 OKWW）的自动化思路迁移到 Android：同时支持 **「云·鸣潮」网页版**（`https://mc.kurogames.com/cloud/` + Via 浏览器）与 **鸣潮手机端官方客户端**，用投屏像素分析 + 离线 OCR + 无障碍手势实现自动战斗、自动拾取、跳过剧情，以及云游戏的断线自动重连。
 
 - 纯 Kotlin，**无需 root、无需 Xposed**
 - 不修改游戏客户端，只读取屏幕、模拟点击
@@ -25,6 +25,7 @@
 - [项目结构](#项目结构)
 - [常见问题](#常见问题)
 - [已知限制](#已知限制)
+- [更新日志](#更新日志)
 - [免责声明](#免责声明)
 - [License](#license)
 
@@ -34,7 +35,8 @@
 
 | 功能 | 说明 |
 | --- | --- |
-| **云断线守护** | OCR 识别「云服务错误 / 1020 / 连接中断」弹窗，自动点击重试；识别「排队中」时安静等待；识别「进入游戏 / 复苏」时自动进场 |
+| **云断线守护** | OCR 识别「云服务错误 / 1020 / 连接中断」弹窗，自动点击重试；识别「排队中」时安静等待；识别「进入游戏 / 复苏」时自动进场（仅云·鸣潮） |
+| **手机端支持** | 一键启动鸣潮官方客户端（官服 / B 服），血条识别与自动化能力与云版一致；云断线守护对本地客户端无效，可关闭 |
 | **自动战斗** | 通过血条颜色检测（普通怪红条 / Boss 红条）判断是否进入战斗，按节奏释放普攻、技能、解放、声骸，可自动切人、可选锁定目标 |
 | **自动拾取** | OCR 识别「吸收 / 拾取 / 采集 / 调查」等提示并点击，黑名单排除「开始合成 / 领取奖励 / 确认」等误判 |
 | **自动跳过剧情** | 识别对白区文字密度，优先点「跳过」，否则点对话推进点 |
@@ -60,6 +62,21 @@
 | 适配方式 | 固定分辨率模板 | 归一化坐标 + 玩家自行添加点位 |
 
 选择重写而非移植的原因：云游戏画面经过视频编码，模板匹配对画质 / 缩放极其敏感，且模板图集体积过大；改用颜色 + OCR 后在串流画质下更稳定，APK 体积也控制在 50MB 内。
+
+---
+
+## 两种使用场景
+
+| | 云·鸣潮（Via 网页版） | 鸣潮手机端（官方客户端） |
+| --- | --- | --- |
+| 启动方式 | 主界面「打开云·鸣潮」 | 主界面「打开鸣潮手游」（官服 / B 服自动识别） |
+| 云断线守护 | **需要**（1020 / 排队 / 复苏） | 不需要，建议关闭 |
+| 血条识别 / 自动战斗 / 拾取 / 剧情 | 支持 | 支持 |
+| 悬浮窗开关 / 游戏内添加按键 | 支持 | 支持 |
+| 游戏模式（横屏 / 亮度 / 免打扰 / 沉浸） | 支持 | 支持 |
+| 适合场景 | 手机性能有限、想省电省流量 | 能直接跑客户端、延迟与画质更好 |
+
+自动化引擎不区分画面来源：只要完成投屏授权与无障碍服务，两个场景用同一套任务与按键点位（各自添加一次即可）。
 
 ---
 
@@ -125,10 +142,10 @@ gradle :app:assembleDebug
 
 产物：`app/build/outputs/apk/debug/app-debug.apk`
 
-已打包好的版本可直接下载：
+已发布版本请到 [Releases](https://github.com/jiang386/okww-mobile/releases) 下载（APK 作为 Release 附件，不入库）：
 
-- 标准版（targetSdk 35）：[okww-mobile-0.1.3-debug.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.3-debug.apk)
-- 侧载兼容版（targetSdk 32，绕过部分 ROM 的「受限设置」）：[okww-mobile-0.1.3-target32.apk](https://github.com/jiang386/okww-mobile/raw/main/okww-mobile-0.1.3-target32.apk)
+- 标准版（targetSdk 35）：[okww-mobile-0.1.4-debug.apk](https://github.com/jiang386/okww-mobile/releases/download/v0.1.4/okww-mobile-0.1.4-debug.apk)
+- 侧载兼容版（targetSdk 32，绕过部分 ROM 的「受限设置」）：[okww-mobile-0.1.4-target32.apk](https://github.com/jiang386/okww-mobile/releases/download/v0.1.4/okww-mobile-0.1.4-target32.apk)
 
 ### 侧载兼容构建（targetSdk 32）
 
@@ -332,6 +349,20 @@ adb shell appops set com.okww.mobile ACCESS_RESTRICTED_SETTINGS allow
 - 自动化强依赖投屏授权与无障碍服务，任一被系统回收就会停止。
 - 云游戏本身的排队、登录、验证码、封号风险不由本项目控制。
 - 云端串流延迟较高时，点击与画面反馈存在天然滞后，节奏参数可适当调大。
+
+---
+
+## 更新日志
+
+各版本的完整说明见 `docs/releases/`，并作为 Release 附件提供：
+
+| 版本 | 主要内容 | 说明 |
+| --- | --- | --- |
+| v0.1.4 | 鸣潮手机端适配、改为 Release 附件发布 | [v0.1.4.md](docs/releases/v0.1.4.md) |
+| v0.1.3 | 悬浮窗内切换任务、游戏内点按添加按键 | [v0.1.3.md](docs/releases/v0.1.3.md) |
+| v0.1.2 | 取消默认键位，首次点按添加；推荐全屏横屏游戏模式 | [v0.1.2.md](docs/releases/v0.1.2.md) |
+| v0.1.1 | 按实机截图重标定键位，移除网页全屏键 | [v0.1.1.md](docs/releases/v0.1.1.md) |
+| v0.1.0 | 首个版本：采集 / OCR / 云断线守护 / 自动战斗 / 拾取 / 剧情 / 校准 | [v0.1.0.md](docs/releases/v0.1.0.md) |
 
 ---
 

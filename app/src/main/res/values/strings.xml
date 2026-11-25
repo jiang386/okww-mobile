@@ -5,7 +5,7 @@
     <string name="accessibility_desc">用于在云·鸣潮网页版中模拟点击与滑动，实现自动战斗、自动拾取与云断线重连。不会读取你的输入内容。</string>
 
     <string name="title">OKWW 移动版 · 云·鸣潮自动化</string>
-    <string name="subtitle">Android 移植版 · 推荐 Via 全屏 + 横屏 + 游戏模式游玩（也支持触屏操作）</string>
+    <string name="subtitle">Android 移植版 · 支持云·鸣潮（Via）与鸣潮手机端 · 推荐全屏 + 横屏 + 游戏模式</string>
 
     <string name="step_permissions">① 授权</string>
     <string name="btn_capture">投屏授权</string>
@@ -14,6 +14,7 @@
     <string name="btn_notify">通知</string>
     <string name="btn_battery">电池优化</string>
     <string name="btn_launch">打开云·鸣潮</string>
+    <string name="btn_open_native">打开鸣潮手游</string>
     <string name="btn_game_mode">游戏模式</string>
     <string name="btn_calibrate">按键校准</string>
     <string name="btn_panel">悬浮控制台</string>
@@ -62,12 +63,13 @@
     <string name="cal_overlay_tip">长按悬浮窗「校准」可清空全部按键</string>
 
     <string name="help_title">使用说明 / Via 设置</string>
-    <string name="help_body">推荐游玩方式：Via 打开云·鸣潮后，切到「全屏 + 横屏」，再点本应用「游戏模式」。竖屏 / 带浏览器地址栏的状态也能用，但画面更小、系统手势容易误触，不建议。\n\n1) 投屏授权：选择「整个屏幕」或「单个应用（Via）」，之后本应用才能在后台看到画面。\n\n2) 无障碍服务：OKWW 触控执行器用于模拟点击/滑动。\n\n3) Via 横屏 + 全屏 + 游戏模式：\n· 手机横放后打开云·鸣潮；\n· 点本应用「游戏模式」：锁定横屏、提高亮度、开启免打扰、尝试沉浸全屏；\n· 若提示「沉浸全屏需要 adb」，执行一次：\nadb shell pm grant com.okww.mobile android.permission.WRITE_SECURE_SETTINGS\n\n4) 按键添加：本版本不再提供默认键位。推荐开启悬浮控制台后，在游戏画面上点「校准」，直接点按按钮位置添加；也可在应用内「校准」页添加。自动战斗至少需要「普攻」。所有开关与校准都能在游戏内完成，无需退出云游戏。\n\n5) 云游戏断线（如 1020 云服务错误）会被「云断线守护」自动点掉并重进游戏。\n\n注意：云游戏有串流延迟，已内置 0.8s 重锁与 3s 血条宽限；仍建议使用稳定网络。</string>
+    <string name="help_body">两种用法：\n· 云·鸣潮（Via 网页版）：打开云·鸣潮 → 全屏 + 横屏 + 游戏模式，全部功能可用（含云断线守护）；\n· 鸣潮手机端（官方客户端）：点「打开鸣潮手游」直接进游戏，血条识别、自动战斗/拾取/剧情、悬浮窗开关与按键添加都可用，云断线守护对本地客户端无效可关闭。\n\n1) 投屏授权：选择「整个屏幕」，之后本应用才能在后台看到画面。\n\n2) 无障碍服务：OKWW 触控执行器用于模拟点击/滑动。\n\n3) 游戏模式：锁定横屏、提高亮度、开启免打扰、尝试沉浸全屏；若提示需要 adb，执行一次：\nadb shell pm grant com.okww.mobile android.permission.WRITE_SECURE_SETTINGS\n\n4) 按键添加：不提供默认键位。推荐开启悬浮控制台后，在游戏画面上点「校准」，直接点按按钮位置添加；也可在应用内「校准」页添加。自动战斗至少需要「普攻」。所有开关与校准都能在游戏内完成，无需退出云游戏。\n\n5) 云游戏断线（如 1020 云服务错误）会被「云断线守护」自动点掉并重进游戏。\n\n注意：云游戏有串流延迟，已内置 0.8s 重锁与 3s 血条宽限；仍建议使用稳定网络。</string>
     <string name="help_ok">知道了</string>
     <string name="copy_adb">复制 adb 命令</string>
     <string name="copied">已复制</string>
 
     <string name="toast_no_via">未检测到 Via 浏览器（mark.via / mark.via.gp）</string>
+    <string name="toast_no_game">未检测到鸣潮手机端（com.kurogame.mingchao）</string>
     <string name="toast_no_capture">请先完成投屏授权</string>
     <string name="toast_no_access">请先开启无障碍服务</string>
     <string name="toast_started">自动化已启动</string>

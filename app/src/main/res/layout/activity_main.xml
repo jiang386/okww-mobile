@@ -126,6 +126,14 @@
                     android:text="@string/btn_launch" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnNative"
+                    style="@style/Widget.OKWW.Button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:text="@string/btn_open_native" />
+
+                <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnGameMode"
                     style="@style/Widget.OKWW.Button"
                     android:layout_width="wrap_content"

@@ -129,6 +129,11 @@ class MainActivity : AppCompatActivity() {
                 Toast.makeText(this, R.string.toast_no_via, Toast.LENGTH_LONG).show()
             }
         }
+        b.btnNative.setOnClickListener {
+            if (!ViaHelper.openGame(this)) {
+                Toast.makeText(this, R.string.toast_no_game, Toast.LENGTH_LONG).show()
+            }
+        }
         b.btnGameMode.setOnClickListener { showGameModeDialog() }
         b.btnCalibrate.setOnClickListener {
             startActivity(Intent(this, CalibrationActivity::class.java))

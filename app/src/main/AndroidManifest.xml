@@ -15,6 +15,8 @@
     <queries>
         <package android:name="mark.via" />
         <package android:name="mark.via.gp" />
+        <package android:name="com.kurogame.mingchao" />
+        <package android:name="com.kurogame.mingchao.bilibili" />
         <intent>
             <action android:name="android.intent.action.VIEW" />
             <data android:scheme="https" />
