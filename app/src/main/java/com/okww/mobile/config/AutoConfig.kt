@@ -6,25 +6,25 @@ import com.okww.mobile.R
 import org.json.JSONObject
 
 /**
- * 需要校准的触控点。坐标均为相对屏幕的 0~1 归一化值，
- * 不同分辨率 / 不同云游戏 UI 只需校准一次。
+ * 需要玩家自行添加的触控点。坐标均为相对屏幕的 0~1 归一化值，
+ * 不同分辨率 / 不同云游戏 UI 只需添加一次。
  *
- * 默认值参考移动端《云·鸣潮》横屏布局，可能与实际机型存在偏差，务必校准。
+ * 不提供默认坐标：首次使用需在「按键校准」页按实际画面点按添加。
  */
-enum class KeyPoint(val labelRes: Int, val defX: Float, val defY: Float) {
-    ATTACK(R.string.point_attack, 0.928f, 0.712f),
-    SKILL(R.string.point_skill, 0.763f, 0.778f),
-    ULTIMATE(R.string.point_ultimate, 0.725f, 0.867f),
-    ECHO(R.string.point_echo, 0.806f, 0.673f),
-    DODGE(R.string.point_dodge, 0.870f, 0.678f),
-    JUMP(R.string.point_jump, 0.871f, 0.842f),
-    INTERACT(R.string.point_interact, 0.855f, 0.430f),
-    SWITCH_1(R.string.point_switch1, 0.950f, 0.322f),
-    SWITCH_2(R.string.point_switch2, 0.950f, 0.433f),
-    SWITCH_3(R.string.point_switch3, 0.950f, 0.544f),
-    JOYSTICK(R.string.point_joystick, 0.130f, 0.670f),
-    DIALOG_ADVANCE(R.string.point_dialog, 0.800f, 0.780f),
-    TARGET(R.string.point_target, 0.945f, 0.600f)
+enum class KeyPoint(val labelRes: Int) {
+    ATTACK(R.string.point_attack),
+    SKILL(R.string.point_skill),
+    ULTIMATE(R.string.point_ultimate),
+    ECHO(R.string.point_echo),
+    DODGE(R.string.point_dodge),
+    JUMP(R.string.point_jump),
+    INTERACT(R.string.point_interact),
+    SWITCH_1(R.string.point_switch1),
+    SWITCH_2(R.string.point_switch2),
+    SWITCH_3(R.string.point_switch3),
+    JOYSTICK(R.string.point_joystick),
+    DIALOG_ADVANCE(R.string.point_dialog),
+    TARGET(R.string.point_target)
 }
 
 class AutoConfig {
@@ -49,16 +49,15 @@ class AutoConfig {
     /** 血条消失后仍判定为战斗中的宽限时间（云游戏串流闪烁，参考 OKWW 的 3s）。 */
     var healthGraceMs: Long = 3000L
 
-    init {
-        resetPoints()
-    }
-
-    fun resetPoints() {
+    /** 清空全部按键点。 */
+    fun clearPoints() {
         points.clear()
-        KeyPoint.entries.forEach { points[it] = PointF(it.defX, it.defY) }
     }
 
-    fun p(key: KeyPoint): PointF = points[key] ?: PointF(key.defX, key.defY)
+    fun isSet(key: KeyPoint): Boolean = points.containsKey(key)
+
+    /** 返回已设置的按键坐标；未设置时返回 null。 */
+    fun p(key: KeyPoint): PointF? = points[key]
 
     fun setPoint(key: KeyPoint, x: Float, y: Float) {
         points[key] = PointF(x.coerceIn(0.01f, 0.99f), y.coerceIn(0.01f, 0.99f))
@@ -115,7 +114,7 @@ class AutoConfig {
                 if (pts != null) {
                     KeyPoint.entries.forEach { k ->
                         val o = pts.optJSONObject(k.name) ?: return@forEach
-                        cfg.setPoint(k, o.optDouble("x", k.defX.toDouble()).toFloat(), o.optDouble("y", k.defY.toDouble()).toFloat())
+                        cfg.setPoint(k, o.optDouble("x", 0.0).toFloat(), o.optDouble("y", 0.0).toFloat())
                     }
                 }
             }

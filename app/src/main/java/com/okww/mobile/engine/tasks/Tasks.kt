@@ -134,7 +134,8 @@ object DialogTask {
             Touch.tapNorm(skip.box.centerX(), skip.box.centerY())
             RunState.setStatus("跳过剧情")
         } else {
-            val p = vc.cfg.p(KeyPoint.DIALOG_ADVANCE)
+            // 未添加「剧情推进」按键时不盲点，等待玩家在剧情中手动推进。
+            val p = vc.cfg.p(KeyPoint.DIALOG_ADVANCE) ?: return false
             Touch.tapNorm(p.x, p.y)
             RunState.setStatus("推进剧情")
         }
@@ -269,7 +270,7 @@ class CombatTask {
     }
 
     private fun tap(cfg: com.okww.mobile.config.AutoConfig, key: KeyPoint) {
-        val p = cfg.p(key)
+        val p = cfg.p(key) ?: return
         Touch.tapNorm(p.x, p.y)
     }
 }

@@ -5,7 +5,7 @@
     <string name="accessibility_desc">用于在云·鸣潮网页版中模拟点击与滑动，实现自动战斗、自动拾取与云断线重连。不会读取你的输入内容。</string>
 
     <string name="title">OKWW 移动版 · 云·鸣潮自动化</string>
-    <string name="subtitle">Android 移植版 · 适配 Via 浏览器横屏 / 全屏 / 游戏模式</string>
+    <string name="subtitle">Android 移植版 · 推荐 Via 全屏 + 横屏 + 游戏模式游玩（也支持触屏操作）</string>
 
     <string name="step_permissions">① 授权</string>
     <string name="btn_capture">投屏授权</string>
@@ -28,26 +28,29 @@
     <string name="task_dialog">自动跳过剧情</string>
     <string name="task_switch">自动切人</string>
 
-    <string name="hint">流程：① 授予投屏与无障碍 → ② 用 Via 打开云·鸣潮并进入游戏 → ③ 回到本页点「按键校准」对齐虚拟按键 → ④ 开始自动化，切到 Via 横屏全屏游玩。</string>
+    <string name="hint">推荐：Via「全屏 + 横屏 + 游戏模式」游玩。首次使用需在「按键校准」里按画面自行点按添加按键（不提供默认键位）：① 授予投屏与无障碍 → ② 进入云·鸣潮游戏画面 → ③ 打开「按键校准」逐个点按添加 → ④ 开始自动化。</string>
     <string name="log_title">运行日志</string>
     <string name="status_idle">空闲</string>
     <string name="status_running">运行中</string>
     <string name="status_stopped">已停止</string>
 
     <string name="cal_title">按键校准</string>
-    <string name="cal_desc">把每个圆点拖到游戏里对应的虚拟按键中心。建议先切到 Via 游戏画面，再回到这里点「刷新画面」。</string>
+    <string name="cal_desc">无默认键位。先点选下方按键（或直接点画面，自动选中下一个未添加按键），再在画面上点对应按钮中心即可添加；已添加的点可拖动微调。「测试点击」用于验证落点。</string>
     <string name="cal_save">保存</string>
-    <string name="cal_reset">恢复默认</string>
+    <string name="cal_reset">清空按键</string>
     <string name="cal_refresh">刷新画面</string>
     <string name="cal_test">测试点击</string>
     <string name="cal_noframe">暂无画面：请先完成投屏授权，并让游戏画面保持在后台运行。</string>
     <string name="cal_saved">已保存校准</string>
+    <string name="cal_cleared">已清空全部按键</string>
+    <string name="cal_need_attack">自动战斗需要先添加「普攻」按键</string>
+    <string name="cal_key_unset">该按键尚未添加，请先在画面上点按添加</string>
 
     <string name="overlay_title">OKWW</string>
     <string name="overlay_close">×</string>
 
     <string name="help_title">使用说明 / Via 设置</string>
-    <string name="help_body">1) 投屏授权：选择「整个屏幕」或「单个应用（Via）」，之后本应用才能在后台看到画面。\n\n2) 无障碍服务：OKWW 触控执行器用于模拟点击/滑动。\n\n3) Via 横屏 + 全屏 + 游戏模式：\n· 手机横放后打开云·鸣潮，点网页内的全屏按钮；\n· 点本应用「游戏模式」：锁定横屏、提高亮度、开启免打扰、尝试沉浸全屏；\n· 若提示「沉浸全屏需要 adb」，执行一次：\nadb shell pm grant com.okww.mobile android.permission.WRITE_SECURE_SETTINGS\n\n4) 按键校准：云游戏画面里的按键位置因机型/分辨率而异，必须校准一次。\n\n5) 云游戏断线（如 1020 云服务错误）会被「云断线守护」自动点掉并重进游戏。\n\n注意：云游戏有串流延迟，已内置 0.8s 重锁与 3s 血条宽限；仍建议使用稳定网络。</string>
+    <string name="help_body">推荐游玩方式：Via 打开云·鸣潮后，切到「全屏 + 横屏」，再点本应用「游戏模式」。竖屏 / 带浏览器地址栏的状态也能用，但画面更小、系统手势容易误触，不建议。\n\n1) 投屏授权：选择「整个屏幕」或「单个应用（Via）」，之后本应用才能在后台看到画面。\n\n2) 无障碍服务：OKWW 触控执行器用于模拟点击/滑动。\n\n3) Via 横屏 + 全屏 + 游戏模式：\n· 手机横放后打开云·鸣潮；\n· 点本应用「游戏模式」：锁定横屏、提高亮度、开启免打扰、尝试沉浸全屏；\n· 若提示「沉浸全屏需要 adb」，执行一次：\nadb shell pm grant com.okww.mobile android.permission.WRITE_SECURE_SETTINGS\n\n4) 按键添加：本版本不再提供默认键位。首次使用请打开「按键校准」，依次点选按键并在画面上点按对应按钮位置完成添加；自动战斗至少需要「普攻」。\n\n5) 云游戏断线（如 1020 云服务错误）会被「云断线守护」自动点掉并重进游戏。\n\n注意：云游戏有串流延迟，已内置 0.8s 重锁与 3s 血条宽限；仍建议使用稳定网络。</string>
     <string name="help_ok">知道了</string>
     <string name="copy_adb">复制 adb 命令</string>
     <string name="copied">已复制</string>

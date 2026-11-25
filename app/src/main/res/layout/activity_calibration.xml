@@ -73,4 +73,22 @@
             android:layout_marginTop="4dp"
             android:text="@string/cal_desc" />
     </LinearLayout>
+
+    <HorizontalScrollView
+        android:id="@+id/chipScroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom"
+        android:background="#E60B1016"
+        android:fillViewport="false"
+        android:paddingHorizontal="8dp"
+        android:paddingVertical="6dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/chipRow"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+    </HorizontalScrollView>
 </FrameLayout>

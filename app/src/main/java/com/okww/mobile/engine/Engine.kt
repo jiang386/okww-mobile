@@ -4,6 +4,7 @@ import android.content.Context
 import android.os.SystemClock
 import com.okww.mobile.App
 import com.okww.mobile.config.AutoConfig
+import com.okww.mobile.config.KeyPoint
 import com.okww.mobile.engine.tasks.CloudGuardTask
 import com.okww.mobile.engine.tasks.CombatTask
 import com.okww.mobile.engine.tasks.DialogTask
@@ -61,6 +62,11 @@ class AutomationEngine(private val context: Context) {
         }
         if (!AutoAccessibilityService.ready()) {
             RunState.setStatus("请先开启无障碍服务")
+            return false
+        }
+        val cfg = App.instance.cfg
+        if (cfg.enabledCombat && !cfg.isSet(KeyPoint.ATTACK)) {
+            RunState.setStatus("请先在「按键校准」点按添加按键")
             return false
         }
         CloudGuardTask.reset()
